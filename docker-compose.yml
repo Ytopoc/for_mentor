@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: streamlit_app
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./saved_model:/usr/src/app/saved_model
+      - ./main.py:/usr/src/app/main.py
+    environment:
+      - PYTHONUNBUFFERED=1
+    networks:
+      - app_network
+
+networks:
+  app_network:
+
+
+
